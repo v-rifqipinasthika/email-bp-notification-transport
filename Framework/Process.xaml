@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1103.2,2241.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1234,2398</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="100">
@@ -134,7 +134,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="592,2176.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="592,2333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="periodReminder" />
       <Variable x:TypeArguments="x:String" Name="rowCurrentBp" />
@@ -147,20 +147,20 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="529.6,132.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <If Condition="[CBool(in_TransactionItem(&quot;IncompleteConfig&quot;))]" DisplayName="If Incomplete Config Throw" sap:VirtualizedContainerService.HintSize="529.6,480.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="530,132" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <If Condition="[CBool(in_TransactionItem(&quot;IncompleteConfig&quot;))]" DisplayName="If Incomplete Config Throw" sap:VirtualizedContainerService.HintSize="530,476" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,200" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,198" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Throw DisplayName="Throw Incomplete Config" Exception="[New BusinessRuleException(&quot;Please complete the config for BP Notificatiom to run&quot;)]" sap:VirtualizedContainerService.HintSize="353.6,113.6" sap2010:WorkflowViewState.IdRef="Throw_2" />
+          <Throw DisplayName="Throw Incomplete Config" Exception="[New BusinessRuleException(&quot;Please complete the config for BP Notificatiom to run&quot;)]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_2" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,102.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,100" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -169,7 +169,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <Assign sap2010:Annotation.AnnotationText="According to month set in Reminder Period Column in Sheet&#xA;BP_Notification_Schedule" DisplayName="Assign Reminder Period" sap:VirtualizedContainerService.HintSize="529.6,165.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap2010:Annotation.AnnotationText="According to month set in Reminder Period Column in Sheet&#xA;BP_Notification_Schedule" DisplayName="Assign Reminder Period" sap:VirtualizedContainerService.HintSize="530,164" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:DateTime">[periodReminder]</OutArgument>
       </Assign.To>
@@ -182,7 +182,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <Assign DisplayName="Assign Template Number" sap:VirtualizedContainerService.HintSize="529.6,121.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="Assign Template Number" sap:VirtualizedContainerService.HintSize="530,122" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[intTemplateNumber]</OutArgument>
       </Assign.To>
@@ -190,8 +190,8 @@
         <InArgument x:TypeArguments="x:Int32">[CInt(in_TransactionItem("Email Template").ToString)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[intTemplateNumber]" sap:VirtualizedContainerService.HintSize="529.6,320.8" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="1" DisplayName="Custom_Flow\Mail_BP_Notification_1.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_1.xaml">
+    <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[intTemplateNumber]" sap:VirtualizedContainerService.HintSize="530,493" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="1" DisplayName="Custom_Flow\Mail_BP_Notification_1.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_1.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_Period">[periodReminder]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_strEmailTemplate">[in_Config("BPNotification_MailTemplate").ToString.Replace("{0}", intTemplateNumber.ToString)]</InArgument>
@@ -202,7 +202,7 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_strSenderName">[in_Config("SenderName").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="2" DisplayName="Mail_BP_Notification_2.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_2.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="2" DisplayName="Mail_BP_Notification_2.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_2.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_Period">[periodReminder]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_strEmailTemplate">[in_Config("BPNotification_MailTemplate").ToString.Replace("{0}", intTemplateNumber.ToString)]</InArgument>
@@ -213,7 +213,7 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_strSenderName">[in_Config("SenderName").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="3" DisplayName="Mail_BP_Notification_3.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_3.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="3" DisplayName="Mail_BP_Notification_3.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_3.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_Period">[periodReminder]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_strEmailTemplate">[in_Config("BPNotification_MailTemplate").ToString.Replace("{0}", intTemplateNumber.ToString)]</InArgument>
@@ -224,7 +224,7 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_strSenderName">[in_Config("SenderName").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="4" DisplayName="Mail_BP_Notification_4.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_4.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="4" DisplayName="Mail_BP_Notification_4.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_4.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_Period">[periodReminder]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_strEmailTemplate">[in_Config("BPNotification_MailTemplate").ToString.Replace("{0}", intTemplateNumber.ToString)]</InArgument>
@@ -235,7 +235,7 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_strSenderName">[in_Config("SenderName").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="5" DisplayName="Mail_BP_Notification_5.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_5.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="5" DisplayName="Mail_BP_Notification_5.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_5.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_Period">[periodReminder]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_strEmailTemplate">[in_Config("BPNotification_MailTemplate").ToString.Replace("{0}", intTemplateNumber.ToString)]</InArgument>
@@ -246,7 +246,7 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_strSenderName">[in_Config("SenderName").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="6" DisplayName="Mail_BP_Notification_6.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_6.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="6" DisplayName="Mail_BP_Notification_6.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_6.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_Period">[periodReminder]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_strEmailTemplate">[in_Config("BPNotification_MailTemplate").ToString.Replace("{0}", intTemplateNumber.ToString)]</InArgument>
@@ -257,7 +257,18 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_strSenderName">[in_Config("SenderName").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="7" DisplayName="Mail_BP_Notification_7.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_7.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="7" DisplayName="Mail_BP_Notification_7.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_7.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="s:DateTime" x:Key="in_Period">[periodReminder]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strEmailTemplate">[in_Config("BPNotification_MailTemplate").ToString.Replace("{0}", intTemplateNumber.ToString)]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CredentialEmail">[in_Config("CredMail").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_MailTo">[in_TransactionItem("Email User To").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_MailCC">[in_TransactionItem("Email User CC").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strBPName">[in_TransactionItem("Business Partner").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_strSenderName">[in_Config("SenderName").ToString]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="8" DisplayName="Mail_BP_Notification_8.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Custom_Flow\Mail_BP_Notification_8.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_Period">[periodReminder]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_strEmailTemplate">[in_Config("BPNotification_MailTemplate").ToString.Replace("{0}", intTemplateNumber.ToString)]</InArgument>
@@ -269,7 +280,7 @@
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Switch>
-    <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope Use SAKey" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="529.6,790.4" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_Config(&quot;PathSAKey&quot;).ToString]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
+    <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope Use SAKey" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="530,786" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_Config(&quot;PathSAKey&quot;).ToString]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
       <uga:GSuiteApplicationScope.AuthenticationScopes>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
           <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/spreadsheets</InArgument>
@@ -280,13 +291,13 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ug:SimpleObjectContainer" Name="GSuiteScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,655.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,651" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap2010:Annotation.AnnotationText="To determine position of rerurn flag. This will implement correctly if rerun placed at last row&#xA;&#xA;RowFlag = Total data + 1 (header)" DisplayName="Assign Row Flag" sap:VirtualizedContainerService.HintSize="433.6,197.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign sap2010:Annotation.AnnotationText="To determine position of rerurn flag. This will implement correctly if rerun placed at last row&#xA;&#xA;RowFlag = Total data + 1 (header)" DisplayName="Assign Row Flag" sap:VirtualizedContainerService.HintSize="434,194" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[rowCurrentBp]</OutArgument>
               </Assign.To>
